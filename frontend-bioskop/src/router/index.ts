@@ -4,6 +4,8 @@ import AboutView from '@/views/AboutView.vue'
 import ListView from '@/views/ListView.vue'
 import MovieView from '@/views/MovieView.vue'
 import CinemaView from '@/views/CinemaView.vue'
+import EditCinema from '@/views/EditCinema.vue'
+import NewCinema from '@/views/NewCinema.vue'
 
 
 const router = createRouter({
@@ -49,7 +51,22 @@ const router = createRouter({
         title: 'Bioskopi'
       }
     },
-    
+    {
+      path: '/cinema/new',
+      name: 'new-cinema',
+      component: NewCinema,
+      meta: {
+        title: 'Novi Bioskop'
+      }
+    },
+    {
+      path: '/cinema/:id',
+      name: 'edit-cinema',
+      component: EditCinema,
+      meta: {
+        title: 'Izmeni Bioskop'
+      }
+    },
     {
       path: '/:catchAll(.*)',
       redirect: '/'

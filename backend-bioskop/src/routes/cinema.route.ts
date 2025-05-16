@@ -22,3 +22,17 @@ CinemaRoute.post('/',async (req, res) => {
         CinemaService.createCinema(req.body)
     )
 })
+
+CinemaRoute.put('/:id', async (req, res) => {
+    await defineRequest(res, async() => {
+        const id = Number(req.params.id)
+        await CinemaService.updateCinema(id, req.body)
+    })
+})
+
+CinemaRoute.delete('/:id', async (req, res) => {
+    await defineRequest(res, async() => {
+        const id = Number(req.params.id)
+        await CinemaService.deleteCinemaById(id)
+    })
+})

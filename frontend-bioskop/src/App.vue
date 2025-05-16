@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 const year = new Date().getFullYear()
+import { getUserEmail } from './auth'
+import { getRefreshToken } from './auth';
+import { login } from './utils';
+
+if (!getRefreshToken()) {
+  login('admin@example.com', 'admin123')
+}
 </script>
 
 <template>
@@ -27,6 +34,9 @@ const year = new Date().getFullYear()
               <RouterLink class="nav-link" to="/list" exact-active-class="active">List</RouterLink>
             </li>
           </ul>
+          <span class="navbar-text">
+            <i class="fa-solid fa-user"></i> {{ getUserEmail() }}
+          </span>
         </div>
       </div>
     </nav>

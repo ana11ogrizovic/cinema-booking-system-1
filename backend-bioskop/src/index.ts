@@ -5,6 +5,8 @@ import morgan from 'morgan'
 import { config, configDotenv } from 'dotenv'
 import { AppDataSource } from './db'
 import { CinemaRoute } from './routes/cinema.route'
+import { UserRoute } from './routes/user.route'
+import { UserService } from './services/user.service'
 
 const app = express()
 app.use(cors())
@@ -18,6 +20,8 @@ app.get('/', (req: Request, res: Response) => {
 })
 
 //app routes
+app.use(UserService.validateToken)
+app.use('/api/user', UserRoute)
 app.use('/api/movie', MovieRoute)
 app.use('/api/cinema', CinemaRoute)
 

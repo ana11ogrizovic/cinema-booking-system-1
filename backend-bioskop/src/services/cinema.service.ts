@@ -51,7 +51,7 @@ export class CinemaService {
         await repo.save(cinema)
     }
 
-    static async deleteCinema(id: number){
+    static async deleteCinemaById(id: number){
         const cinema = await this.getCinemaById(id)
         cinema.deletedAt = new Date()
         await repo.save(cinema)
